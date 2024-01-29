@@ -54,7 +54,7 @@ const login = async(req,res, next) =>{
 
         const token = jwt.sign({id: userExists._id}, process.env.JWT, {expiresIn: '5d'})
 
-        const {password: pass, ...user} = userExists._doc    
+        const {password: pass, ...data} = userExists._doc    
 
         res.cookie('token', token, {
             httpOnly:true,
@@ -62,7 +62,7 @@ const login = async(req,res, next) =>{
             expires:new Date(Date.now() + 1000 * 432000), //5days
             sameSite: 'none',
             secure:true 
-           }).status(200).json({"message":"You have successfully logged in", token,user})
+           }).status(200).json({"message":"You have successfully logged in", token,data})
 
 
          
@@ -86,10 +86,10 @@ const google = async(req,res, next) =>{
         const hashedPassword = bcrypt.hashSync(newPassword, 20)
         const newUser = await userModel.create({username: username.split(" ").join("").toLowerCase() + Math.random().toString(36).slice(-4), email, password: hashedPassword, photo})
 
-        const {password, ...user} = newUser._doc
+        const {password, ...data} = newUser._doc
 
         const token = jwt.sign({id: newUser._id}, process.env.JWT, {expiresIn:'5d'})
-        res.cookie('token', token, {httpOnly: true}).status(200).json(user)
+        res.cookie('token', token, {httpOnly: true}).status(200).json(data)
 
     }
      

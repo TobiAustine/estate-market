@@ -4,10 +4,11 @@ import { app } from '../firebase';
 import axios from 'axios';
 import { useDispatch} from "react-redux"
 import { signIn,signInError,signInSuccess } from '../redux/user/userSlice';
-
+import {useNavigate} from 'react-router-dom'
 
 const Oauth = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const url = import.meta.env.VITE_REACT_APP_base_URL
   
     const handleGoogleClick = async() => { 

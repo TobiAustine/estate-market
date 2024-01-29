@@ -41,7 +41,7 @@ const [error, setError] = useState(null)
  dispatch(signInSuccess(response))
     alert(`Login Successful`)
     navigate('/')
-    console.log(response.data);
+    console.log(response.data.data);
  
     } catch (error) {
       if (error.response && error.response.status === 404) {

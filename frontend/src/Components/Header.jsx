@@ -1,8 +1,16 @@
  import { IoSearchSharp } from "react-icons/io5";
  import { Link } from "react-router-dom";
  import { useState } from "react";
+ import {useSelector} from 'react-redux' 
 const Header = () => {
- // const [first, setfirst] = useState(second)
+  // const userExists = localStorage.getItem('user')
+  // const [user, setUser] = useState(null)
+  // if(userExists){
+  //   setUser(userExists)
+  // }
+
+
+  const {currentUser} = useSelector(state => state.user)
   return (
     <header className="bg-secondary">
       <div className="flex items-center justify-between max-w-6xl mx-auto p-2">
@@ -22,7 +30,21 @@ const Header = () => {
         <ul className="flex items-center gap-3 font-bold ">
             <li className="hover:underline hidden sm:block"> <Link to='/'>Home</Link> </li>
             <li className="hover:underline hidden sm:block"> <Link to='/about'>About</Link> </li>
-            <li className="hover:underline"> <Link to='/signin'>Sign In</Link> </li>
+           
+
+
+
+
+           <li>
+           {
+              currentUser ?
+             
+              ( <Link to='/profile'> <img src={currentUser.data.photo ||  currentUser.data.data.photo} alt="Profile" className="w-12 h-8 rounded-full object-cover"/>   
+              </Link>)  :  <Link className="hover:underline " to='/signin'> Sign In </Link>
+            }
+            </li>
+            
+            
         </ul >
       </div>
        
