@@ -5,6 +5,12 @@
 input:focus{
   outline: none;
 }
+
+input{
+  border-radius: 5px;
+  height: 2rem;
+  padding: 10px;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
