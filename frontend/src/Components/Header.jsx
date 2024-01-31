@@ -1,6 +1,7 @@
  import { IoSearchSharp } from "react-icons/io5";
  import { Link } from "react-router-dom";
- import { useState } from "react";
+ import { useEffect } from "react";
+
  import {useSelector} from 'react-redux' 
 const Header = () => {
   // const userExists = localStorage.getItem('user')
@@ -10,7 +11,10 @@ const Header = () => {
   // }
 
 
-  const {currentUser} = useSelector(state => state.user)
+  const {currentUser} = useSelector(state  => state.user)
+  
+  
+  
   return (
     <header className="bg-secondary">
       <div className="flex items-center justify-between max-w-6xl mx-auto p-2">
@@ -53,3 +57,4 @@ const Header = () => {
 }
  
 export default Header
+
